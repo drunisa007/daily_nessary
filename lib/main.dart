@@ -19,10 +19,10 @@ import 'feature/opt_screen/view/otp_page.dart';
 void main() {
   //runApp(const MyApp());
 
-    runApp(DevicePreview(
+  /*  runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(), // Wrap your app
-  ));
+  ));*/
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       title: 'Snack Delivery',
-         builder: DevicePreview.appBuilder,
+       //  builder: DevicePreview.appBuilder,
       theme: ThemeData(
         primaryColor: generateMaterialColor(const Color(0xff04D4F0)),
         scaffoldBackgroundColor: generateMaterialColor(const Color(0xffE9E9E9)),
