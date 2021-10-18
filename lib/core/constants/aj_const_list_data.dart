@@ -1,15 +1,16 @@
 import 'package:snack_delivery/core/models/snack_model.dart';
-
+var pricing = Pricing(quantity: "quantity", save: "100", price:"1000");
+var images = "assets/images/snack.png";
 List<SnackModel> snackModelList = [
-  
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
-  SnackModel(snackId: "001", snackName: "Potato Chips", snackSubtitle: "Best quality in Myanmar", snackPrice: "528 KYATS"),
+
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+  SnackModel(id: "001", title: "Potato Chips", subTitle: "Best quality in Myanmar",description: "This is not the one ",pricing: [pricing],images:[images] ),
+
 
 
 ];

@@ -33,7 +33,7 @@ Widget buildHomePageBody(BuildContext context,SizeConfig sizeConfig) {
               Image.asset("assets/images/snack.png",height: sizeConfig.blockSizeVertical*10,width: sizeConfig.blockSizeHorizontal*10,fit: BoxFit.cover,),
 
               SizedBox(height: 8,),
-              Text(snackModelList[index].snackName,style:  TextStyle(color: colorBlack,fontSize: 20.sp),)
+              Text(snackModelList[index].title,style:  TextStyle(color: colorBlack,fontSize: 20.sp),)
             ],
           ),
         )

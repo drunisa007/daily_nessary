@@ -6,6 +6,15 @@ import 'package:get/get.dart';
 import 'package:snack_delivery/core/utils/generate_material_color.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
+import 'package:snack_delivery/feature/opt_screen/binding/otp_page_binding.dart';
+import 'package:snack_delivery/feature/phoneNumberScreen/binding/phone_number_page_controller.dart';
+import 'package:snack_delivery/feature/phoneNumberScreen/view/phone_number_page.dart';
+import 'package:snack_delivery/feature/profile_info_page/binding/profile_info_page_binding.dart';
+import 'package:snack_delivery/feature/profile_info_page/view/profile_info_page.dart';
+import 'package:snack_delivery/feature/splashScreen/binding/splash_screen_page_binding.dart';
+import 'package:snack_delivery/feature/splashScreen/view/splash_screen_page.dart';
+
+import 'feature/opt_screen/view/otp_page.dart';
 
 void main() {
   //runApp(const MyApp());
@@ -35,8 +44,30 @@ class MyApp extends StatelessWidget {
             name: '/',
             page: () => const FeaturePage(),
             binding: FeatureBinding()),
+        GetPage(
+            name: '/splash_screen_page',
+            page: () =>  SplashScreenPage(),
+          binding: SplashScreenPageBinding()
+           ),
+        GetPage(
+          name: '/phone_number_page',
+          page: () =>  PhoneNumberPage(),
+          binding: PhoneNumberPageBinding()
+        ),
+        GetPage(
+          name: '/otp_page',
+          page: () =>  OtpPage(),
+          binding: OtpPageBinding()
+        ),
+        GetPage(
+            name: '/profile_info_page',
+            page: () =>  ProfileInfoPage(),
+          binding: ProfileInfoPageBinding()
+
+        ),
+
       ],
-      initialRoute: '/',
+      initialRoute: '/otp_page',
     );
   }
 }

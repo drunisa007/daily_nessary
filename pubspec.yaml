@@ -17,6 +17,7 @@ dependencies:
   flutter_svg: ^0.22.0
   flutter_screenutil: ^5.0.0+2
   device_preview: ^0.7.4
+  pin_code_fields: ^7.3.0
 
 dev_dependencies:
   flutter_test:
