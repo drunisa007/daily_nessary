@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpPageController extends GetxController {
-  bool hasError = false;
+  //bool hasError = false;
  // String currentText = "";
   //final formKey = GlobalKey<FormState>();
 

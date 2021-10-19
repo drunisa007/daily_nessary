@@ -17,9 +17,9 @@ import 'package:snack_delivery/feature/splashScreen/view/splash_screen_page.dart
 import 'feature/opt_screen/view/otp_page.dart';
 
 void main() {
-  //runApp(const MyApp());
+  runApp(const MyApp());
 
-  /*  runApp(DevicePreview(
+ /*   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(), // Wrap your app
   ));*/
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
         ),
 
       ],
-      initialRoute: '/otp_page',
+      initialRoute: '/splash_screen_page',
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:snack_delivery/core/constants/size_config.dart';
 import 'package:snack_delivery/feature/opt_screen/controller/otp_page_controller.dart';
 
 class OtpPageBinding extends Bindings {
@@ -6,6 +7,7 @@ class OtpPageBinding extends Bindings {
   void dependencies() {
 
     Get.put(OtpPageController());
+    Get.put(SizeConfig());
 
 
   }

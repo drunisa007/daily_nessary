@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
+import 'package:snack_delivery/core/widgets/build_not_found_body.dart';
+import 'package:snack_delivery/feature/splashScreen/controller/splash_screen_page_controller.dart';
 class SplashScreenPage extends StatelessWidget {
 
 
+  SplashSreenPageController splashSreenPageController = Get.find<SplashSreenPageController>();
   @override
   Widget build(BuildContext context) {
 
@@ -16,7 +19,10 @@ class SplashScreenPage extends StatelessWidget {
      builder: () =>  Scaffold(
        backgroundColor: Colors.white,
 
-        body: Column(
+        body: buildNotFoundBody(context,sizeConfig,title: "No item found",subtitle: "Use have n't add data yet",buttonTittle: "Go to Shop",
+            imagePath: "assets/images/item.png",onClick: () => print("clicked"))
+
+     /*  Column(
 
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -34,7 +40,7 @@ class SplashScreenPage extends StatelessWidget {
                   )),
             ),
           ],
-        ),
+        ),*/
       ),
     );
   }

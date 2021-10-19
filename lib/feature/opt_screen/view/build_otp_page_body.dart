@@ -4,18 +4,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:snack_delivery/core/constants/all_font_sizes.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
 
 Widget buildOtpPageBody(BuildContext context,SizeConfig sizeConfig) {
 
-  return SingleChildScrollView(
-    child: Padding(
-      padding: EdgeInsets.all(8),
-        child: getOptAction(context, sizeConfig)
-    )
-
-
-
+  return Padding(
+    padding: EdgeInsets.all(8),
+      child: getOptAction(context, sizeConfig)
   );
 }
 
@@ -27,42 +23,36 @@ getOptAction(BuildContext context, SizeConfig sizeConfig) {
   bool hasError = false;
   String currentText = "";
   final formKey = GlobalKey<FormState>();
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
+  return ListView(
+    //crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
       SizedBox(height: 30),
       Center(
         child: Container(
-          height: MediaQuery.of(context).size.height / 3,
+          height: sizeConfig.blockSizeVertical * 30,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: Image.asset("assets/images/snack.png"),
+            child: Image.asset("assets/images/cover.png"),
           ),
         ),
       ),
-      SizedBox(height: 8),
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Text(
-          'Phone Number Verification',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.sp),
-          textAlign: TextAlign.center,
-        ),
+      SizedBox(height: sizeConfig.blockSizeVertical * 5),
+     Text("We will sent you6 digit number via sms",
+  style: TextStyle(
+  color: Colors.grey,
+
+  fontSize: kSmallBodyFontSize.sp)
+  ),
+      SizedBox(
+        height: 8,
       ),
-      RichText(
-        text: TextSpan(
-            text: "Enter the code sent to ",
-            children: [
-              TextSpan(
-                  text: "09420110933",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.sp)),
-            ],
-            style: TextStyle(color: Colors.black54, fontSize: 16.sp)),
-        textAlign: TextAlign.center,
+      Text(
+        'Enter Your OPT Code Below',
+
+        style: TextStyle(fontWeight: FontWeight.bold, fontSize: kLargeBodyFontSize.sp),
+
       ),
+
       SizedBox(
         height: 20,
       ),
@@ -135,39 +125,11 @@ getOptAction(BuildContext context, SizeConfig sizeConfig) {
               },
             )),
       ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
-        child: Text(
-          hasError ? "*Please fill up all the cells properly" : "",
-          style: TextStyle(
-              color: Colors.red,
-              fontSize: 12,
-              fontWeight: FontWeight.w400),
-        ),
-      ),
+
+
+
       SizedBox(
-        height: 20,
-      ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Didn't receive the code? ",
-            style: TextStyle(color: Colors.black54, fontSize: 16.sp),
-          ),
-          TextButton(
-              onPressed: () => snackBar("OTP resend!!",context),
-              child: Text(
-                "RESEND",
-                style: TextStyle(
-                    color: Color(0xFF91D3B3),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.sp),
-              ))
-        ],
-      ),
-      SizedBox(
-        height: 14,
+        height: sizeConfig.blockSizeVertical * 10,
       ),
       ElevatedButton(
 
@@ -175,9 +137,19 @@ getOptAction(BuildContext context, SizeConfig sizeConfig) {
               minimumSize: Size(double.infinity, 50), //
               primary: Colors.red// double.infinity is the width and 30 is the height
           ),
-          child: Text("Confirm Otp", style: TextStyle(color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.bold),),
+          child: Text("Varify Code", style: TextStyle(color: Colors.white, fontSize: kLargeTitleFontSize.sp, fontWeight: FontWeight.bold),),
 
           onPressed: () {}),
+      //Spacer(),
+      SizedBox(
+        height: sizeConfig.blockSizeVertical * 5,
+      ),
+      Center(
+        child: Text("Resent Otp in 6 s ",   style: TextStyle(
+            color: Colors.grey,
+
+            fontSize: kSmallBodyFontSize.sp)),
+      )
 
 
     ],

@@ -15,7 +15,8 @@ class PhoneNumberPage extends StatelessWidget {
     return ScreenUtilInit(
       builder: () =>  Scaffold(
         backgroundColor: colorWhite,
-        body: buildPhoneNumberBody(context,sizeConfig)
+        body: buildPhoneNumberBody(context,sizeConfig),
+
       ),
     );
   }
