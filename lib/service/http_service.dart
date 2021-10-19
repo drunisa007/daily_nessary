@@ -14,6 +14,7 @@ class HttpService{
     initData();
   }
 
+
   Future<HttpResponse> getData(uri) async {
     try{
 

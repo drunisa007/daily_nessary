@@ -4,16 +4,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/utils/generate_material_color.dart';
+import 'package:snack_delivery/feature/all_item/binding/all_item_binding.dart';
+import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
 
 void main() {
-  //runApp(const MyApp());
+  runApp(const MyApp());
 
-    runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(), // Wrap your app
-  ));
+  //   runApp(DevicePreview(
+  //   enabled: !kReleaseMode,
+  //   builder: (context) => MyApp(), // Wrap your app
+  // ));
 }
 
 class MyApp extends StatelessWidget {
@@ -25,16 +27,22 @@ class MyApp extends StatelessWidget {
       title: 'Snack Delivery',
          builder: DevicePreview.appBuilder,
       theme: ThemeData(
-        primaryColor: generateMaterialColor(const Color(0xff04D4F0)),
+        primaryColor: generateMaterialColor(const Color(0xffff5c4d)),
         scaffoldBackgroundColor: generateMaterialColor(const Color(0xffE9E9E9)),
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: generateMaterialColor(const Color(0xffff5c4d))),
+            .copyWith(secondary: generateMaterialColor(const Color(0xffff5c4d)),
+
+        ),
       ),
       getPages: [
         GetPage(
             name: '/',
             page: () => const FeaturePage(),
             binding: FeatureBinding()),
+        GetPage(
+            name: '/all-item-page',
+            page: () => const AllItemPage(),
+            binding: AllItemBinding()),
       ],
       initialRoute: '/',
     );
