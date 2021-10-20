@@ -7,6 +7,8 @@ import 'package:snack_delivery/feature/all_item/binding/all_item_binding.dart';
 import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
+import 'package:snack_delivery/feature/item_detail/binding/item_detail_binding.dart';
+import 'package:snack_delivery/feature/item_detail/view/item_detail_page.dart';
 import 'package:snack_delivery/feature/opt_screen/binding/otp_page_binding.dart';
 import 'package:snack_delivery/feature/phoneNumberScreen/binding/phone_number_page_controller.dart';
 import 'package:snack_delivery/feature/phoneNumberScreen/view/phone_number_page.dart';
@@ -72,8 +74,12 @@ class MyApp extends StatelessWidget {
             name: '/all-item-page',
             page: () => const AllItemPage(),
             binding: AllItemBinding()),
+        GetPage(
+            name: '/item-detail-page',
+            page: () => const ItemDetailPage(),
+            binding: ItemDetailBinding()),
       ],
-      initialRoute: '/splash_screen_page',
+      initialRoute: '/',
     );
   }
 }

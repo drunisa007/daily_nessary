@@ -22,7 +22,9 @@ Widget buildHomePageBody(BuildContext context, SizeConfig mSizeConfig,
 
         return GestureDetector(
           onTap: (){
-            Get.toNamed('/all-item-page',arguments: [mModel.categId.toString()]);
+           // Get.toNamed('/all-item-page',arguments: [mModel.categId.toString()]);
+
+            Get.toNamed('/item-detail-page');
           },
           child: Container(
               decoration: BoxDecoration(

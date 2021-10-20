@@ -1,5 +1,6 @@
 import 'package:snack_delivery/core/models/addtocart_model.dart';
 import 'package:snack_delivery/core/models/deliveryfee_model.dart';
+import 'package:snack_delivery/core/models/package_model.dart';
 
 List<AddToCartModel> _mAddToCartList = [
   AddToCartModel(
@@ -66,6 +67,18 @@ List<DeliveryFeeModel> _mDeliveryFeeList=[
 
 List<DeliveryFeeModel> getDeliveryFeeList(){
   return _mDeliveryFeeList;
+}
+
+
+List<PackageModel> _mPackagesList=[
+  PackageModel(packageName: "3 ခု", save: 0, price: 650),
+  PackageModel(packageName: "6 ခု", save: 100, price: 1200),
+  PackageModel(packageName: "1 ပါကင် (14 ခု)", save: 333, price: 2700),
+];
+
+
+List<PackageModel> getPackagesList() {
+  return _mPackagesList;
 }
 
 
