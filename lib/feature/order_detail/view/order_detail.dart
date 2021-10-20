@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
 import 'package:snack_delivery/core/widgets/appbar/appbar_with_back_arrow.dart';
-import 'package:snack_delivery/core/widgets/appbar/simple_app_bar.dart';
+import 'package:snack_delivery/feature/order_detail/controller/order_detail_controller.dart';
+import 'package:snack_delivery/feature/order_detail/view/order_detail_all_widget.dart';
 import 'package:snack_delivery/feature/order_main/controller/order_page_controller.dart';
-import 'package:snack_delivery/feature/order_main/view/order_page_all_widget.dart';
 
-class OrderPage extends StatelessWidget {
- // const OrderPage({Key? key}) : super(key: key);
+class OrderDetail extends StatelessWidget {
 
-  OrderPageController orderPageController = Get.find<OrderPageController>();
+
+ OrderDetailController orderDetailController  = Get.find<OrderDetailController>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class OrderPage extends StatelessWidget {
     SizeConfig sizeConfig = Get.find<SizeConfig>();
     sizeConfig.init(context);
     return ScreenUtilInit(builder: () => Scaffold(
-      appBar: getSimpleAppbar("Your Orders"),
+      appBar: getAppBarWithBackArrow("Order Detail", sizeConfig, ()=> print("hahahha")),
       backgroundColor: Colors.white,
-      body: orderPageAllWidget(context, sizeConfig,orderPageController),
+      body: buildOrderDetailBody(context, sizeConfig, orderDetailController)
     ));
   }
 }

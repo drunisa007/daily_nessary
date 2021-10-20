@@ -8,6 +8,9 @@ import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
 import 'package:snack_delivery/feature/opt_screen/binding/otp_page_binding.dart';
+import 'package:snack_delivery/feature/order_detail/binding/order_detail_binding.dart';
+import 'package:snack_delivery/feature/order_detail/view/order_detail.dart';
+import 'package:snack_delivery/feature/order_main/binding/order_page_binding.dart';
 import 'package:snack_delivery/feature/phone_number_page/binding/phone_number_page_controller.dart';
 import 'package:snack_delivery/feature/profile_info_page/binding/profile_info_page_binding.dart';
 import 'package:snack_delivery/feature/profile_info_page/view/profile_info_page.dart';
@@ -15,6 +18,7 @@ import 'package:snack_delivery/feature/splashScreen/binding/splash_screen_page_b
 import 'package:snack_delivery/feature/splashScreen/view/splash_screen_page.dart';
 
 import 'feature/opt_screen/view/otp_page.dart';
+import 'feature/order_main/view/order_page.dart';
 import 'feature/phone_number_page/view/phone_number_page.dart';
 
 void main() {
@@ -72,8 +76,16 @@ class MyApp extends StatelessWidget {
             name: '/all-item-page',
             page: () => const AllItemPage(),
             binding: AllItemBinding()),
+        GetPage(
+            name: '/order-page',
+            page: () =>  OrderPage(),
+            binding: OrderPageBinding()),
+        GetPage(name: '/order-detail-page',
+            page: () => OrderDetail(),
+        binding: OrderDetailBinding()
+        )
       ],
-      initialRoute: '/splash_screen_page',
+      initialRoute: '/order-page',
     );
   }
 }
