@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
 import 'package:snack_delivery/core/utils/default_style.dart';
-import 'package:snack_delivery/feature/phoneNumberScreen/view/build_phone_number_body.dart';
+import 'package:snack_delivery/feature/phone_number_page/view/build_phone_number_body.dart';
 
 class PhoneNumberPage extends StatelessWidget {
   const PhoneNumberPage({Key? key}) : super(key: key);

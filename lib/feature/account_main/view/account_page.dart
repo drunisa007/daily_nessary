@@ -22,6 +22,12 @@ class AccountPage extends StatelessWidget {
             RaisedButton(
                 child: Text("Profile info page"),
                 onPressed: () => Get.toNamed('/profile_info_page')),
+           RaisedButton(
+                child: Text("Order page"),
+                onPressed: () => Get.toNamed('/order-page')),
+           RaisedButton(
+                child: Text("Setting Page"),
+                onPressed: () => Get.toNamed('/setting-page')),
 
           ],
     
