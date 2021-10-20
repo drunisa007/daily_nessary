@@ -41,7 +41,7 @@ getOptAction(BuildContext context, SizeConfig sizeConfig) {
   style: TextStyle(
   color: Colors.grey,
 
-  fontSize: kSmallBodyFontSize.sp)
+  fontSize: kLargeBodyFontSize.sp)
   ),
       SizedBox(
         height: 8,
@@ -137,7 +137,7 @@ getOptAction(BuildContext context, SizeConfig sizeConfig) {
               minimumSize: Size(double.infinity, 50), //
               primary: Colors.red// double.infinity is the width and 30 is the height
           ),
-          child: Text("Varify Code", style: TextStyle(color: Colors.white, fontSize: kLargeTitleFontSize.sp, fontWeight: FontWeight.bold),),
+          child: Text("Verify Code", style: TextStyle(color: Colors.white, fontSize: kLargeButtonTextFontSize.sp, fontWeight: FontWeight.bold),),
 
           onPressed: () {}),
       //Spacer(),
@@ -148,7 +148,7 @@ getOptAction(BuildContext context, SizeConfig sizeConfig) {
         child: Text("Resent Otp in 6 s ",   style: TextStyle(
             color: Colors.grey,
 
-            fontSize: kSmallBodyFontSize.sp)),
+            fontSize: kLargeBodyFontSize.sp)),
       )
 
 

@@ -47,23 +47,21 @@ Widget getProfileWidget(BuildContext context, SizeConfig sizeConfig) {
         height: 8,
       ),
 
-      Container(
+      Card(
+        elevation: 8,
+        shadowColor: Colors.grey.withOpacity(0.4),
         child: Theme(
+
           data:Theme.of(context).copyWith(
             colorScheme: ThemeData().colorScheme.copyWith(
-              primary:Colors.black,
+              primary : Colors.black,
             ),
           ),
           child: TextField(
 
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: kLargeBodyFontSize.sp,
-              fontWeight: FontWeight.w500,
-            ),
+            style: TextStyle(color : Colors.black,fontSize: kLargeTitleFontSize.sp,fontWeight: FontWeight.w600),
             decoration: InputDecoration(
               fillColor: Colors.white,
-
               prefixIcon: Icon(Icons.account_circle),
               filled: true,
               enabledBorder: OutlineInputBorder(
@@ -78,24 +76,16 @@ Widget getProfileWidget(BuildContext context, SizeConfig sizeConfig) {
 
 
               ),
-              hintText: "Customer Name"
+              hintText: "Customer Name",
+              hintStyle:  TextStyle(color : Colors.grey.withOpacity(0.8),fontSize: kMediumBodyFontSize.sp),
+
 
 
 
             ),
           ),
         ),
-        decoration: BoxDecoration(
 
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              blurRadius: 5,
-              offset: const Offset(0, 5),
-            ),
-
-          ],
-        ),
 
       ),
       SizedBox(
@@ -109,7 +99,7 @@ Widget getProfileWidget(BuildContext context, SizeConfig sizeConfig) {
                 minimumSize: Size(double.infinity, 50), //
                 primary: Colors.red// double.infinity is the width and 30 is the height
             ),
-            child: Text("Save Profile", style: TextStyle(color: Colors.white, fontSize: kLargeTitleFontSize.sp, fontWeight: FontWeight.bold),),
+            child: Text("Save Profile", style: TextStyle(color: Colors.white, fontSize: kLargeButtonTextFontSize.sp, fontWeight: FontWeight.bold),),
 
             onPressed: () {}),
       ),

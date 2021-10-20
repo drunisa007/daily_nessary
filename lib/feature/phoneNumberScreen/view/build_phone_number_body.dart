@@ -35,27 +35,31 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
       Text(
         "Hello Welcome!!",
         style: TextStyle(
-            color: Colors.grey,fontSize: kSmallTitleFontSize.sp ),
+            color: Colors.grey,fontSize: kLargeBodyFontSize.sp ),
       ),
       SizedBox(
         height:8,
       ),
       Text(
-        "Varify Your Phone Number",
+        "Verify Your Phone Number",
         style: TextStyle(
           color: Colors.black, fontSize: kLargeTitleFontSize.sp, fontWeight: FontWeight.bold,),
       ),
       SizedBox(
         height: 24,
       ),
-      Container(
+      Card(
+        elevation: 8,
+        shadowColor: Colors.grey.withOpacity(0.4),
         child: Theme(
+
           data:Theme.of(context).copyWith(
             colorScheme: ThemeData().colorScheme.copyWith(
               primary : Colors.black,
             ),
           ),
           child: TextField(
+            keyboardType: TextInputType.number,
 
             style: TextStyle(color : Colors.black,fontSize: kLargeTitleFontSize.sp,fontWeight: FontWeight.w600),
             decoration: InputDecoration(
@@ -74,7 +78,8 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
 
 
                 ),
-                hintText: "09********"
+                hintText: "Phone Number",
+              hintStyle:  TextStyle(color : Colors.grey.withOpacity(0.8),fontSize: kMediumBodyFontSize.sp),
 
 
 
@@ -82,7 +87,7 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
             ),
           ),
         ),
-        decoration: BoxDecoration(
+        /*decoration: BoxDecoration(
 
           boxShadow: [
             BoxShadow(
@@ -92,7 +97,7 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
             ),
 
           ],
-        ),
+        ),*/
 
       ),
       SizedBox(
@@ -105,7 +110,7 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
                 minimumSize: Size(double.infinity, 50), //
                 primary: Colors.red// double.infinity is the width and 30 is the height
             ),
-            child: Text("Send OTP Code", style: TextStyle(color: Colors.white, fontSize: kLargeTitleFontSize.sp, fontWeight: FontWeight.bold),),
+            child: Text("Send OTP Code", style: TextStyle(color: Colors.white, fontSize: kLargeButtonTextFontSize.sp, fontWeight: FontWeight.bold),),
 
             onPressed: () {}),
       ),
@@ -122,7 +127,7 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
         children: [
 
           TextSpan(text :   "By Creating an account, you aggree to our ",style: TextStyle(color: Colors.grey,fontSize: kSmallTitleFontSize.sp,),),
-          TextSpan(text :   "Terms of Servies and Privacy Policy",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w500,fontSize: kMediumTitleFontSize.sp)),
+          TextSpan(text :   "Terms of Servies and Privacy Policy",style: TextStyle(color: Colors.blue,fontWeight: FontWeight.w500,fontSize: kMediumTitleFontSize.sp, decoration: TextDecoration.underline,)),
 
         ]
       )

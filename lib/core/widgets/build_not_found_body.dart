@@ -22,7 +22,7 @@ Widget buildNotFoundBody(BuildContext context,SizeConfig sizeConfig,
         SizedBox(height: 16,),
         Text(title,style: TextStyle(color: Colors.black,fontSize: kLargeTitleFontSize.sp,fontWeight: FontWeight.w600),),
         SizedBox(height: 8,),
-        Text(subtitle,style: TextStyle(color: Colors.black,fontSize: kMediumBodyFontSize.sp,fontWeight: FontWeight.w400),),
+        Text(subtitle,style: TextStyle(color: Colors.grey,fontSize: kMediumBodyFontSize.sp,fontWeight: FontWeight.w400),),
         SizedBox(height: 16,),
         ButtonTheme(
 
@@ -32,7 +32,7 @@ Widget buildNotFoundBody(BuildContext context,SizeConfig sizeConfig,
           child: RaisedButton(
 
             color: Colors.red,
-              child: Text(buttonTittle,style: TextStyle(color: Colors.white,fontSize: kLargeTitleFontSize.sp,fontWeight: FontWeight.w600),),
+              child: Text(buttonTittle,style: TextStyle(color: Colors.white,fontSize: kLargeButtonTextFontSize.sp,fontWeight: FontWeight.w600),),
               onPressed: () => print("it's pressed"),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50.sp),

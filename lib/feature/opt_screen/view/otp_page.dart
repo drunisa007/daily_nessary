@@ -23,14 +23,7 @@ class OtpPage extends StatelessWidget {
 
 
 
-    snackBar(String? message) {
-      return ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(message!),
-          duration: Duration(seconds: 2),
-        ),
-      );
-    }
+
     return ScreenUtilInit(
       builder: () => Scaffold(
         backgroundColor: Colors.white,
