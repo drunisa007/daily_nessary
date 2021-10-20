@@ -21,8 +21,8 @@ Widget orderPageAllWidget(BuildContext context,SizeConfig sizeConfig,OrderPageCo
               children: [
 
             orderPageController.orderModelList[index].isOrderFinish ?
-                buildOrderFinishBody(context, sizeConfig, "Order Id #1", "orderStatus", "23 : 45 mins") :
-            buildOrderMakingBody(context, sizeConfig, "Order Id #1", "orderStatus", "23 : 45 mins"),
+                buildOrderFinishBody(context, sizeConfig, orderPageController.orderModelList[index].orderId,  "orderStatus",orderPageController.orderModelList[index].orderTime,orderPageController.orderModelList[index].isOrderFinish) :
+            buildOrderMakingBody(context, sizeConfig, orderPageController.orderModelList[index].orderId, "orderStatus", orderPageController.orderModelList[index].orderTime,orderPageController.orderModelList[index].isOrderFinish),
 
             ],
             ),
@@ -34,7 +34,7 @@ Widget orderPageAllWidget(BuildContext context,SizeConfig sizeConfig,OrderPageCo
 
 }
 
-Widget buildOrderFinishBody(BuildContext context,SizeConfig sizeConfig,String orderId,String orderStatus,String orderDuration) {
+Widget buildOrderFinishBody(BuildContext context,SizeConfig sizeConfig,String orderId,String orderStatus,String orderDuration,bool isFinish) {
 
   return Container(
 
@@ -92,7 +92,7 @@ Widget buildOrderFinishBody(BuildContext context,SizeConfig sizeConfig,String or
             border: Border.all(color: Colors.grey)
           ),
 
-          child:   Text(orderStatus,style: TextStyle(color: Colors.black,fontSize: kLargeButtonTextFontSize.sp,),)
+          child:   Text("Finishing Order",style: TextStyle(color: Colors.black,fontSize: kLargeButtonTextFontSize.sp,),)
         ),
         Text("Thank you for Shopping with Us...",style: TextStyle(color: Colors.grey,fontSize: kMediumBodyFontSize.sp,),)
 
@@ -104,7 +104,7 @@ Widget buildOrderFinishBody(BuildContext context,SizeConfig sizeConfig,String or
 }
 
 
-Widget buildOrderMakingBody(BuildContext context,SizeConfig sizeConfig,String orderId,String orderStatus,String orderDuration) {
+Widget buildOrderMakingBody(BuildContext context,SizeConfig sizeConfig,String orderId,String orderStatus,String orderDuration,bool isFinish) {
 
   return Container(
 
@@ -158,7 +158,7 @@ Widget buildOrderMakingBody(BuildContext context,SizeConfig sizeConfig,String or
                 border: Border.all(color:Theme.of(context).primaryColor)
             ),
 
-            child:   Text(orderDuration,style: TextStyle(color: Colors.black,fontSize: kLargeButtonTextFontSize.sp,),)
+            child:   Text("Making Order",style: TextStyle(color: Colors.black,fontSize: kLargeButtonTextFontSize.sp,),)
         ),
 
         Row(
@@ -192,7 +192,9 @@ Widget buildOrderMakingBody(BuildContext context,SizeConfig sizeConfig,String or
 
             ],
           ),
-        )
+        ),
+        Text("We will delivery your product as soon as possible...",style: TextStyle(color: Colors.grey,fontSize: kMediumBodyFontSize.sp,),)
+
 
 
       ],
