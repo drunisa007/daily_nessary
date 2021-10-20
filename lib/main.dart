@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/utils/generate_material_color.dart';
+import 'package:snack_delivery/feature/all_item/binding/all_item_binding.dart';
+import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
 import 'package:snack_delivery/feature/opt_screen/binding/otp_page_binding.dart';
@@ -34,10 +35,12 @@ class MyApp extends StatelessWidget {
       title: 'Snack Delivery',
        //  builder: DevicePreview.appBuilder,
       theme: ThemeData(
-        primaryColor: generateMaterialColor(const Color(0xff04D4F0)),
+        primaryColor: generateMaterialColor(const Color(0xffff5c4d)),
         scaffoldBackgroundColor: generateMaterialColor(const Color(0xffE9E9E9)),
         colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: generateMaterialColor(const Color(0xffff5c4d))),
+            .copyWith(secondary: generateMaterialColor(const Color(0xffff5c4d)),
+
+        ),
       ),
       getPages: [
         GetPage(
@@ -65,7 +68,10 @@ class MyApp extends StatelessWidget {
           binding: ProfileInfoPageBinding()
 
         ),
-
+       GetPage(
+            name: '/all-item-page',
+            page: () => const AllItemPage(),
+            binding: AllItemBinding()),
       ],
       initialRoute: '/splash_screen_page',
     );

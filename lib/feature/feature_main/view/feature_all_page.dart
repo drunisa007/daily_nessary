@@ -32,8 +32,8 @@ BottomNavigationBarItem getNavigationBarItem(
   return BottomNavigationBarItem(
     icon: SvgPicture.asset(
       iconName,
-      width: 24,
-      height: 24,
+      width: 20,
+      height: 20,
       color: index == mController.getIndex()
           ? Theme.of(context).primaryColor
           : Colors.grey,
