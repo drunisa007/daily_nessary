@@ -7,6 +7,8 @@ import 'package:snack_delivery/feature/all_item/binding/all_item_binding.dart';
 import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
+import 'package:snack_delivery/feature/item_detail/binding/item_detail_binding.dart';
+import 'package:snack_delivery/feature/item_detail/view/item_detail_page.dart';
 import 'package:snack_delivery/feature/opt_screen/binding/otp_page_binding.dart';
 import 'package:snack_delivery/feature/order_detail/binding/order_detail_binding.dart';
 import 'package:snack_delivery/feature/order_detail/view/order_detail.dart';
@@ -90,6 +92,11 @@ class MyApp extends StatelessWidget {
             page: () => SettingPage(),
             binding: SettingPageBinding()
         )
+         GetPage(
+            name: '/item-detail-page',
+            page: () => const ItemDetailPage(),
+            binding: ItemDetailBinding()),
+
       ],
       initialRoute: '/',
     );
