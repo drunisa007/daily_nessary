@@ -10,11 +10,16 @@ import 'package:snack_delivery/feature/order_main/controller/order_page_controll
 Widget orderPageAllWidget(BuildContext context,SizeConfig sizeConfig,OrderPageController orderPageController) {
 
   return ListView.builder(
+    padding: EdgeInsets.only(top: 8),
       itemCount: orderPageController.orderModelList.length,
       itemBuilder:(context, int index) {
 
         return InkWell(
-          onTap: () => Get.toNamed('/order-detail-page'),
+          onTap: () {
+            orderPageController.addToOrderDetailModel(index);
+            Get.toNamed('/order-detail-page');
+
+          },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
