@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/setting-page',
             page: () => SettingPage(),
             binding: SettingPageBinding()
-        )
+        ),
          GetPage(
             name: '/item-detail-page',
             page: () => const ItemDetailPage(),
