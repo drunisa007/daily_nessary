@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/all_font_sizes.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
 
@@ -65,6 +66,7 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
             decoration: InputDecoration(
                 fillColor: Colors.white,
                 prefixIcon: Icon(Icons.phone),
+                counterText: "",
                 filled: true,
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -85,6 +87,7 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
 
 
             ),
+            maxLength: 11,
           ),
         ),
         /*decoration: BoxDecoration(
@@ -112,7 +115,9 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
             ),
             child: Text("Send OTP Code", style: TextStyle(color: Colors.white, fontSize: kLargeButtonTextFontSize.sp, fontWeight: FontWeight.bold),),
 
-            onPressed: () {}),
+            onPressed: () {
+              Get.toNamed('/otp_page');
+            }),
       ),
 
 

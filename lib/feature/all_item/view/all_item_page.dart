@@ -12,26 +12,27 @@ class AllItemPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     SizeConfig mSizeConfig = Get.find<SizeConfig>();
     mSizeConfig.init(context);
 
     String categoryId = Get.arguments[0];
+    String categoryName = Get.arguments[1];
 
     AllItemController mAllItemController = Get.find<AllItemController>();
 
     mAllItemController.fetchItem(categoryId);
 
     return Scaffold(
-      appBar: getAppBarWithBackArrow(categoryId,mSizeConfig,()=> Get.back()),
+      appBar: getAppBarWithBackArrow(categoryName, mSizeConfig, () => Get.back()),
       body: Container(
           margin: EdgeInsets.only(
               top: kMarginLarge,
               left: kMarginMedium,
               right: kMarginMedium,
               bottom: kMarginMedium),
-          child: buildItems(mSizeConfig,mAllItemController)),
+          child: Obx(()=> mAllItemController.showLoading.isTrue
+              ? buildItemsShimmer(mSizeConfig)
+              : buildItems(mSizeConfig, mAllItemController))),
     );
   }
 }

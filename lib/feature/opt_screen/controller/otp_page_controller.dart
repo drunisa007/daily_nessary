@@ -3,37 +3,36 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:snack_delivery/feature/opt_screen/view/otp_page.dart';
 
 class OtpPageController extends GetxController {
-  //bool hasError = false;
- // String currentText = "";
-  //final formKey = GlobalKey<FormState>();
 
-  OtpPageBinding() {
+  RxList<String> mOptCodeList = RxList();
 
-    print("Otp page Controller");
+  RxInt codePosition = RxInt(0);
 
-  }
+  TextEditingController mAllCodeController = TextEditingController();
 
- checkOtp(GlobalKey<FormState>  formKey,String currentText,
-  StreamController<ErrorAnimationType>? errorController) {
 
-/*
-
-    formKey.currentState!.validate();
-    // conditions for validating
-    if (currentText.length != 6 || currentText != "123456") {
-      errorController!.add(ErrorAnimationType
-          .shake); // Triggering error shake animation
-      hasError = true;
-    } else {
-
-          hasError = false;
-         print("otp varify");
+  OtpPageController(){
+    for(int i=0;i<6;i++){
+      mOptCodeList.add(" ");
     }
-*/
-
   }
 
+  addSingleNewCode(BuildContext context, FocusNode inputNode){
+    if(mAllCodeController.text.toString().isNotEmpty){
+      int tempPositon = mAllCodeController.text.toString().length-1;
+      mOptCodeList[tempPositon]=mAllCodeController.text.toString()[tempPositon];
+      print(mOptCodeList);
+      if(tempPositon==5){
+        codePosition.value = tempPositon;
+        print('tempPosition is 6 now');
+        FocusScope.of(context).unfocus();
+      }
+
+    }
+
+  }
 
 }

@@ -34,9 +34,9 @@ Widget buildAddToCartListData(
                         child: CachedNetworkImage(
                           imageUrl: mModel.image,
                           placeholder: (context, url) =>
-                              CircularProgressIndicator(),
+                            Image.asset('assets/images/place_holder.png',fit: BoxFit.fitHeight,),
                           errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                              Image.asset('assets/images/place_holder.png',fit: BoxFit.fitHeight,),
                           fit: BoxFit.fitHeight,
                           width: double.infinity,
                           height: double.infinity,
@@ -114,7 +114,7 @@ Widget buildAddToCartListData(
                             icon: Icon(
                               Icons.delete,
                               size: 18.sp,
-                              color: Colors.grey,
+                              color: Colors.black,
                             ),
                           ),
                         ))),
@@ -392,7 +392,35 @@ buildItemDetailAndTotalCost(
           height: 10.sp,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            showDialog(context:context,builder: (context){
+              return AlertDialog(
+                title: Text('Confirm Phone Number',style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: kLargeTitleFontSize
+                ),),
+                content: Text('You need to confirm your phone number.',style: TextStyle(
+                    color: Colors.black,
+                    fontSize: kMediumTitleFontSize
+                ),),
+                actions: [
+                  TextButton(onPressed: (){
+                    Get.back();
+                  }, child: Text('Cancel',style: TextStyle(
+                    color: Colors.grey
+                  ),)),
+                  TextButton(style: TextButton.styleFrom(
+                    primary: Theme.of(context).primaryColor
+                  ),onPressed: (){
+                     Get.toNamed('/phone_number_page');
+                  }, child: Text('Okay',style: TextStyle(
+                    color: Theme.of(context).primaryColor
+                  ),),)
+                ],
+              );
+            });
+          },
           child: Container(
             width: mSizeConfig.blockSizeHorizontal * 25,
             height: mSizeConfig.blockSizeHorizontal * 8,
