@@ -3,6 +3,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/utils/generate_material_color.dart';
+import 'package:snack_delivery/feature/about_us/view/about_us_page.dart';
 import 'package:snack_delivery/feature/all_item/binding/all_item_binding.dart';
 import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
@@ -16,8 +17,6 @@ import 'package:snack_delivery/feature/order_main/binding/order_page_binding.dar
 import 'package:snack_delivery/feature/phone_number_page/binding/phone_number_page_controller.dart';
 import 'package:snack_delivery/feature/profile_info_page/binding/profile_info_page_binding.dart';
 import 'package:snack_delivery/feature/profile_info_page/view/profile_info_page.dart';
-import 'package:snack_delivery/feature/setting_page/binding/setting_page_binding.dart';
-import 'package:snack_delivery/feature/setting_page/view/setting_page.dart';
 import 'package:snack_delivery/feature/splashScreen/binding/splash_screen_page_binding.dart';
 import 'package:snack_delivery/feature/splashScreen/view/splash_screen_page.dart';
 
@@ -28,7 +27,7 @@ import 'feature/phone_number_page/view/phone_number_page.dart';
 void main() {
   runApp(const MyApp());
 
-  /*  runApp(DevicePreview(
+/*  runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MyApp(), // Wrap your app
   ));*/
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       title: 'Snack Delivery',
-     //    builder: DevicePreview.appBuilder,
+      //   builder: DevicePreview.appBuilder,
       theme: ThemeData(
         primaryColor: generateMaterialColor(const Color(0xffff5c4d)),
         scaffoldBackgroundColor: generateMaterialColor(const Color(0xffE9E9E9)),
@@ -88,14 +87,14 @@ class MyApp extends StatelessWidget {
             page: () => OrderDetail(),
         binding: OrderDetailBinding()
         ),
-        GetPage(name: '/setting-page',
-            page: () => SettingPage(),
-            binding: SettingPageBinding()
-        ),
          GetPage(
             name: '/item-detail-page',
             page: () => const ItemDetailPage(),
             binding: ItemDetailBinding()),
+        GetPage(
+            name: '/about-us-page',
+            page: () =>  AboutUsPage(),
+           ),
 
       ],
       initialRoute: '/',

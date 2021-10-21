@@ -18,7 +18,7 @@ class OrderDetail extends StatelessWidget {
     SizeConfig sizeConfig = Get.find<SizeConfig>();
     sizeConfig.init(context);
     return ScreenUtilInit(builder: () => Scaffold(
-      appBar: getAppBarWithBackArrow("Order Detail", sizeConfig, ()=> print("hahahha")),
+      appBar: getAppBarWithBackArrow("Order Detail", sizeConfig, ()=> Get.back()),
       backgroundColor: Colors.white,
       body: buildOrderDetailBody(context, sizeConfig, orderDetailController)
     ));

@@ -1,39 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:snack_delivery/core/constants/size_config.dart';
+import 'package:snack_delivery/feature/account_main/controller/account_page_controller.dart';
+
+import 'account_page_all_widget.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-      body: SingleChildScrollView(
-        
-        child: Column(
-          children: [
-            
-           RaisedButton(
-               child: Text("Phone Number Page"),
-               onPressed: () => Get.toNamed('/phone_number_page')),
-            RaisedButton(
-                child: Text("Otp Page"),
-                onPressed: () => Get.toNamed('/otp_page')),
-            RaisedButton(
-                child: Text("Profile info page"),
-                onPressed: () => Get.toNamed('/profile_info_page')),
-           RaisedButton(
-                child: Text("Order page"),
-                onPressed: () => Get.toNamed('/order-page')),
-           RaisedButton(
-                child: Text("Setting Page"),
-                onPressed: () => Get.toNamed('/setting-page')),
+    AccountPageController accountPageController = Get.find<AccountPageController>();
 
-          ],
-    
-    
-      ),
-    )
-    );
+    SizeConfig sizeConfig = Get.find<SizeConfig>();
+    sizeConfig.init(context);
+    return ScreenUtilInit(builder: () => Scaffold(
+      body: buildAccountPageAllWidget(context, sizeConfig, accountPageController),
+    ));
   }
 }
