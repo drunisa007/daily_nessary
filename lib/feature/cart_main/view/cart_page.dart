@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/all_font_sizes.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
-import 'package:snack_delivery/core/models/addtocart_model.dart';
 import 'package:snack_delivery/core/utils/temp_data.dart';
 import 'package:snack_delivery/core/widgets/appbar/appbar_with_back_arrow.dart';
 import 'package:snack_delivery/feature/cart_main/controller/cart_controller.dart';

@@ -24,7 +24,9 @@ class HomePage extends StatelessWidget {
             left: kMarginMedium,
             right: kMarginMedium,
             bottom: kMarginMedium),
-        child: buildHomePageBody(context, sizeConfig, mHomeController),
+        child: Obx(()=> mHomeController.showLoading.isTrue
+            ? buildHomePageBodyShimmer(context, sizeConfig)
+            : buildHomePageBody(context, sizeConfig, mHomeController),)
       ),
     );
   }
