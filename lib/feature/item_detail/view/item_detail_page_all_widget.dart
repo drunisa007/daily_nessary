@@ -224,9 +224,6 @@ Widget buildBottomPriceDetailDesign(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 4.sp,
-                    ),
                     Container(
                       child: Text(
                         '${mController.totalPrice} Ks',
@@ -300,9 +297,6 @@ Widget buildBottomPriceDetailDesign(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: 4.sp,
-                            ),
                             Container(
                               child: Text(
                                 '${mController.tempPrice.value} Ks',

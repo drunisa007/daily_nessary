@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:snack_delivery/core/constants/all_font_sizes.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
 import 'package:snack_delivery/feature/opt_screen/controller/otp_page_controller.dart';
