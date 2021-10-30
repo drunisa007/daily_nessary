@@ -15,6 +15,7 @@ Widget buildAddAddressPageAllWidget(BuildContext context,
   );
 }
 
+TextEditingController addressTextController = TextEditingController();
 Widget addAddressWidget(BuildContext context,
     AddAddressPageController addAddressPageController, SizeConfig sizeConfig) {
   return Container(
@@ -109,6 +110,7 @@ Widget addAddressWidget(BuildContext context,
         ),
         TextField(
           keyboardType: TextInputType.text,
+          controller: addressTextController,
           style: TextStyle(
               color: Colors.black,
               fontSize: kLargeTitleFontSize.sp,
@@ -144,7 +146,24 @@ Widget addAddressWidget(BuildContext context,
           child: RaisedButton(
             color: Theme.of(context).primaryColor,
             child: Text("Add Address",style: TextStyle(fontSize: kLargeButtonTextFontSize.sp,color: Colors.white),),
-            onPressed: () {  },
+            onPressed: () {
+
+
+              if(addAddressPageController.chosenValue != null && addAddressPageController.chosenValue != "" &&addressTextController.text !="" ) {
+
+                print("address ${addressTextController.text}");
+                addAddressPageController.addAddress("customerId," ,addAddressPageController.chosenValue, addressTextController.text);
+                print(addAddressPageController.addressList);
+                
+
+              }
+
+               addressTextController.text = "";
+
+
+              Get.toNamed('/my-address-page');
+
+            },
 
           ),
         )

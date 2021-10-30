@@ -111,7 +111,7 @@ class MyApp extends StatelessWidget {
         ),
 
       ],
-      initialRoute: '/',
+      initialRoute: '/add-address-page',
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
+import 'package:snack_delivery/feature/add_address_page/controller/add_address_page_controller.dart';
 import 'package:snack_delivery/feature/my_address_page/controller/my_address_page_controller.dart';
 
 class MyAddressPageBinding extends Bindings {
@@ -8,6 +9,7 @@ class MyAddressPageBinding extends Bindings {
     // TODO: implement dependencies
     Get.put(MyAddressPageController());
     Get.put(SizeConfig());
+
   }
 
 
