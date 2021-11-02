@@ -1,7 +1,13 @@
+
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:snack_delivery/core/utils/generate_material_color.dart';
 import 'package:snack_delivery/feature/about_us/view/about_us_page.dart';
 import 'package:snack_delivery/feature/add_address_page/binding/add_address_page_binding.dart';
@@ -28,7 +34,22 @@ import 'feature/opt_screen/view/otp_page.dart';
 import 'feature/order_main/view/order_page.dart';
 import 'feature/phone_number_page/view/phone_number_page.dart';
 
-void main() {
+Future<void> main() async {
+
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  if (kIsWeb) {
+    await Hive.initFlutter();
+  } else {
+    Directory appDocDir = await getApplicationDocumentsDirectory();
+    String appDocPath = appDocDir.path;
+    await Hive.initFlutter(appDocPath);
+  }
+  await Hive.openBox('authBox');
+  await Hive.openBox('apiBox');
+  await Hive.openBox('customerBox');
+
   runApp(const MyApp());
 
 /*  runApp(DevicePreview(

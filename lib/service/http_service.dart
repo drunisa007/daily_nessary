@@ -14,6 +14,30 @@ class HttpService{
     initData();
   }
 
+  Future<HttpResponse> getLogin(uri) async {
+    try{
+
+      // ,headers: getHeader()
+      var url = Uri.parse(baseUrl+uri);
+      http.Response response  = await http.get(url);
+      if(response.statusCode==200){
+        return HttpResponse('', 200, response.body, true);
+      }
+      else{
+        return HttpResponse('Something went wrong', 400, '', false);
+      }
+    }
+    on FormatException catch(_){
+      return HttpResponse('Something went wrong on server', 400, '', false);
+    }
+    on SocketException catch(_){
+      return HttpResponse('Something went wrong with internet', 400, '', false);
+    }
+    catch(e){
+      return HttpResponse('Something went wrong', 400, '', false);
+    }
+  }
+
 
   Future<HttpResponse> getData(uri) async {
     try{
