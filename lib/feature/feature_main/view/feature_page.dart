@@ -14,10 +14,19 @@ class FeaturePage extends StatelessWidget {
     FeatureController mFeatureController = Get.find<FeatureController>();
 
     return ScreenUtilInit(
-        builder: () => Obx(()=> Scaffold(
-          body: MainPages().getPages(mFeatureController.getIndex()),
-          bottomNavigationBar:
-          getBottomNavBarForFeature(mFeatureController, context),
-        )));
+        builder: () => Obx(() => mFeatureController.authPosition.value == 0
+            ? Center(child: Text("Splash Screen is showing"))
+            : mFeatureController.authPosition.value == 1
+                ?
+        GestureDetector(
+          onTap: (){
+              mFeatureController.letsRegister();
+          },
+            child: Center(child: Text("Plese Login")))
+                : Scaffold(
+                    body: MainPages().getPages(mFeatureController.getIndex()),
+                    bottomNavigationBar:
+                        getBottomNavBarForFeature(mFeatureController, context),
+                  )));
   }
 }

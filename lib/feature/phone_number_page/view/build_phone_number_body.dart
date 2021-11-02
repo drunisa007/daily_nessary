@@ -4,15 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/all_font_sizes.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
+import 'package:snack_delivery/feature/phone_number_page/controller/phone_number_controller.dart';
 
-Widget buildPhoneNumberBody(BuildContext context,SizeConfig sizeConfig) {
+Widget buildPhoneNumberBody(BuildContext context,SizeConfig sizeConfig, PhoneNumberController mPhoneController) {
   return Padding(
     padding: const EdgeInsets.all(kMarginBig),
-    child:getPhoneNumber(context, sizeConfig),
+    child:getPhoneNumber(context, sizeConfig,mPhoneController),
   );
 }
 
-Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
+Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig, PhoneNumberController mPhoneController) {
 
   return ListView(
  /*   mainAxisAlignment: MainAxisAlignment.start,
@@ -116,7 +117,8 @@ Widget getPhoneNumber(BuildContext context,SizeConfig sizeConfig) {
             child: Text("Send OTP Code", style: TextStyle(color: Colors.white, fontSize: kLargeButtonTextFontSize.sp, fontWeight: FontWeight.bold),),
 
             onPressed: () {
-              Get.toNamed('/otp_page');
+
+              // Get.toNamed('/otp_page');
             }),
       ),
 
