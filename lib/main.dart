@@ -1,19 +1,25 @@
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:snack_delivery/core/utils/generate_material_color.dart';
 import 'package:snack_delivery/feature/about_us/view/about_us_page.dart';
+import 'package:snack_delivery/feature/add_address_page/binding/add_address_page_binding.dart';
+import 'package:snack_delivery/feature/add_address_page/view/add_address_page.dart';
 import 'package:snack_delivery/feature/all_item/binding/all_item_binding.dart';
 import 'package:snack_delivery/feature/all_item/view/all_item_page.dart';
 import 'package:snack_delivery/feature/feature_main/binding/feature_binding.dart';
 import 'package:snack_delivery/feature/feature_main/view/feature_page.dart';
 import 'package:snack_delivery/feature/item_detail/binding/item_detail_binding.dart';
 import 'package:snack_delivery/feature/item_detail/view/item_detail_page.dart';
+import 'package:snack_delivery/feature/my_address_page/binding/my_address_page_binding.dart';
+import 'package:snack_delivery/feature/my_address_page/view/my_address_page.dart';
 import 'package:snack_delivery/feature/opt_screen/binding/otp_page_binding.dart';
 import 'package:snack_delivery/feature/order_detail/binding/order_detail_binding.dart';
 import 'package:snack_delivery/feature/order_detail/view/order_detail.dart';
@@ -59,7 +65,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GetMaterialApp(
       title: 'Snack Delivery',
-      //   builder: DevicePreview.appBuilder,
+    builder: DevicePreview.appBuilder,
       theme: ThemeData(
         primaryColor: generateMaterialColor(const Color(0xffff5c4d)),
         scaffoldBackgroundColor: generateMaterialColor(const Color(0xffE9E9E9)),
@@ -114,9 +120,19 @@ class MyApp extends StatelessWidget {
             name: '/about-us-page',
             page: () =>  AboutUsPage(),
            ),
+        GetPage(name: '/add-address-page',
+            page: () =>   AddAddressPage(),
+          binding: AddAddressPageBinding()
+
+        ),
+        GetPage(name: '/my-address-page',
+            page: () =>   MyAddressPage(),
+            binding: MyAddressPageBinding()
+
+        ),
 
       ],
-      initialRoute: '/',
+      initialRoute: '/add-address-page',
     );
   }
 }
