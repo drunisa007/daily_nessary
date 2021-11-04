@@ -19,7 +19,7 @@ class AddAddressPage extends StatelessWidget {
     return ScreenUtilInit(
       builder: () => Scaffold(
         appBar: getAppBarWithBackArrow(
-            "Add Your Address", sizeConfig, () => ()=> Get.back()),
+            "Add Your Address", sizeConfig, ()=> Get.back()),
         body: buildAddAddressPageAllWidget(context, addAddressPageController, sizeConfig)
       )
     );
