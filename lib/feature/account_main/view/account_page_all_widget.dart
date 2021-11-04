@@ -52,37 +52,40 @@ Widget buildSettingTitleWidget(BuildContext context,SizeConfig sizeConfig,Accoun
             ),
           ),
         ),
-        SizedBox(
-          height: 6,
-        ),
+       Divider(
+
+       ),
+
+
 
 
         ///help Center Setting
-        Card(
-          elevation: 0,
+        InkWell(
+          onTap: () =>print("hahah"),
+          child: Card(
+            elevation: 0,
 
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Icon(Icons.phone_in_talk_rounded,color: Colors.black,),
-                SizedBox(
-                  width : 8,
-                ),
-                Text("Help Center",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
+                  Icon(Icons.phone_in_talk_rounded,color: Colors.black,),
+                  SizedBox(
+                    width : 8,
+                  ),
+                  Text("Help Center",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
+                  Spacer(),
+                  Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),
-        SizedBox(
-          height: 6,
-        ),
+        Divider(),
 
 
         ///About Daily Setting
@@ -110,167 +113,171 @@ Widget buildSettingTitleWidget(BuildContext context,SizeConfig sizeConfig,Accoun
               ),
             ),
           ),
-        ),  SizedBox(
-          height: 6,
         ),
+        Divider(),
 
 
         ///Daily App Setting
 
-        Card(
-          elevation: 0,
+        InkWell(
+          onTap: () {
 
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
 
-                Icon(Icons.android_rounded,color: Colors.black,),
-                SizedBox(
-                  width : 8,
-                ),
-                Text("Daily App",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
+          },
+          child: Card(
+            elevation: 0,
 
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+                  Icon(Icons.android_rounded,color: Colors.black,),
+                  SizedBox(
+                    width : 8,
+                  ),
+                  Text("Daily App",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
+                  Spacer(),
+                  Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
+
+                ],
+              ),
             ),
           ),
         ),
-        SizedBox(
-          height: 6,
-        ),
+        Divider(),
 
 
         ///Logout Setting
 
 
-        Card(
-          elevation: 0,
+        InkWell(
+          child: Card(
+            elevation: 0,
 
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Icon(Icons.exit_to_app_outlined,color: Colors.black,),
-                SizedBox(
-                  width : 8,
-                ),
-                Text("Logout Account",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
+                  Icon(Icons.exit_to_app_outlined,color: Colors.black,),
+                  SizedBox(
+                    width : 8,
+                  ),
+                  Text("Logout Account",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
+                  Spacer(),
+                  Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),
-        SizedBox(
-          height: 6,
-        ),
+        Divider(),
 
 
 
+        InkWell(
+          child: Card(
+            elevation: 0,
 
-        Card(
-          elevation: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
 
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-
-                Text("Contact Us Via Social Media",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp),),
-              SizedBox(
-                height: 8,
-              ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Card(
-                      elevation: 4,
-                      color: Color(0xfff7f7f7),
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                          width: sizeConfig.blockSizeHorizontal*13,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset("assets/images/viber.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fitHeight,),
-                           ]
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    Card(
-                      elevation: 4,
-                      color: Color(0xfff7f7f7),
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        width: sizeConfig.blockSizeHorizontal*13,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset("assets/images/facebook.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fill),
-
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-
-                    Card(
-                      elevation: 4,
-                      color: Color(0xfff7f7f7),
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        width: sizeConfig.blockSizeHorizontal*13,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Image.asset("assets/images/messenger.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fitHeight,),
-
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-
-                    Card(
-
-                      elevation: 4,
-                      color: Color(0xfff7f7f7),
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        width: sizeConfig.blockSizeHorizontal*13,
-
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                  Text("Contact Us Via Social Media",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp),),
+                SizedBox(
+                  height: 8,
+                ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/images/gmail.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fitHeight,),
+                      Card(
+                        elevation: 4,
+                        color: Color(0xfff7f7f7),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                            width: sizeConfig.blockSizeHorizontal*13,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/viber.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fitHeight,),
+                             ]
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Card(
+                        elevation: 4,
+                        color: Color(0xfff7f7f7),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          width: sizeConfig.blockSizeHorizontal*13,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/facebook.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fill),
+
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+
+                      Card(
+                        elevation: 4,
+                        color: Color(0xfff7f7f7),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          width: sizeConfig.blockSizeHorizontal*13,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Image.asset("assets/images/messenger.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fitHeight,),
+
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+
+                      Card(
+
+                        elevation: 4,
+                        color: Color(0xfff7f7f7),
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          width: sizeConfig.blockSizeHorizontal*13,
+
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/images/gmail.png",height: sizeConfig.blockSizeVertical*5,fit: BoxFit.fitHeight,),
+
+                      ],
+                    ),
+                  ),
+            ),
+                      SizedBox(
+                        width: 8,
+                      ),
+
 
                     ],
                   ),
-                ),
-          ),
-                    SizedBox(
-                      width: 8,
-                    ),
-
-
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

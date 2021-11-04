@@ -20,6 +20,7 @@ class AddAddressPageController extends GetxController {
   AddAddressPageController() {
     print("add address page controller initialize");
     addressPostRepo = Get.put(AddressPostRepo());
+    getTownshipList();
   }
 
 
@@ -41,6 +42,10 @@ class AddAddressPageController extends GetxController {
 
   }
 
+  getTownshipList() {
+
+    addressPostRepo.getTownshipList();
+  }
 
 
 }

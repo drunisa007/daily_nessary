@@ -45,20 +45,23 @@ class HttpService{
     // ,headers: getHeader()
       var url = Uri.parse(baseUrl+uri);
       http.Response response  = await http.get(url);
+      print("status code is ${response.statusCode}");
       if(response.statusCode==200){
         return HttpResponse('', 200, response.body, true);
       }
       else{
-        return HttpResponse('Something went wrong',response.statusCode, '', false);
+        return HttpResponse('Something went wrong status code',response.statusCode, '', false);
       }
     }
     on FormatException catch(_){
       return HttpResponse('Something went wrong on server', 400, '', false);
     }
     on SocketException catch(_){
+
       return HttpResponse('Something went wrong with internet', 400, '', false);
     }
     catch(e){
+
       return HttpResponse('Something went wrong', 400, '', false);
     }
   }

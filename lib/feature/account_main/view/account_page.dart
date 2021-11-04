@@ -16,6 +16,7 @@ class AccountPage extends StatelessWidget {
     SizeConfig sizeConfig = Get.find<SizeConfig>();
     sizeConfig.init(context);
     return ScreenUtilInit(builder: () => Scaffold(
+      backgroundColor: Colors.white,
       body: buildAccountPageAllWidget(context, sizeConfig, accountPageController),
     ));
   }

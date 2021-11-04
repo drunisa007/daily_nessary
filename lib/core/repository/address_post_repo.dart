@@ -43,13 +43,14 @@ class AddressPostRepo {
     }
   }
 
- /*Future<HttpGetResult<TownshipModel>> getTownshipList() async{
+ Future<HttpGetResult<TownshipModel>> getTownshipList() async{
     
     
     var uri = Uri.parse("region/?view=all");
 
     HttpResponse result = await _httpService.getData(uri);
 
+    print(result.isSuccessful);
 
     if(result.isSuccessful){
       Map tempJson = jsonDecode(result.mData);
@@ -64,12 +65,11 @@ class AddressPostRepo {
     }
     else{
 
-      print("got error on address city");
+      print("got error on address city ${ result.stateCode } ${result.errorMessage}");
       return HttpGetResult(result.errorMessage, result.stateCode,result.mData, false);
     }
 
 
 
   }
-*/
 }
