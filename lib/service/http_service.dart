@@ -49,7 +49,7 @@ class HttpService{
         return HttpResponse('', 200, response.body, true);
       }
       else{
-        return HttpResponse('Something went wrong', 400, '', false);
+        return HttpResponse('Something went wrong',response.statusCode, '', false);
       }
     }
     on FormatException catch(_){

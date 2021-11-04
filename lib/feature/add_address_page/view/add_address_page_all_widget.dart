@@ -134,7 +134,7 @@ Widget addAddressWidget(BuildContext context,
                 color: Colors.grey.withOpacity(0.8),
                 fontSize: kMediumBodyFontSize.sp),
           ),
-          maxLength: 11,
+
         ),
         SizedBox(
           height: 16,

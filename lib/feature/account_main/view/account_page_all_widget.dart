@@ -27,25 +27,28 @@ Widget buildSettingTitleWidget(BuildContext context,SizeConfig sizeConfig,Accoun
 
       children: [
         ///My address setting
-        Card(
-          elevation: 0,
+        InkWell(
+          onTap: () =>Get.toNamed("/my-address-page"),
+          child: Card(
+            elevation: 0,
 
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Icon(Icons.person_pin_outlined,color: Colors.black,),
-                SizedBox(
-                  width : 8,
-                ),
-                Text("My Address",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
-                Spacer(),
-                Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
+                  Icon(Icons.person_pin_outlined,color: Colors.black,),
+                  SizedBox(
+                    width : 8,
+                  ),
+                  Text("My Address",style: TextStyle(color: Colors.black,fontSize: kLargeBodyFontSize.sp,fontWeight: FontWeight.w500)),
+                  Spacer(),
+                  Icon(Icons.arrow_forward_ios_rounded,color: Colors.black,size: 18.sp,),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),

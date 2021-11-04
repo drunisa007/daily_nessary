@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-AddressModel addressModelFromJson(String str) => AddressModel.fromJson(json.decode(str));
+List<AddressModel> addressModelFromJson(String str) => List<AddressModel>.from(json.decode(str).map((x) => AddressModel.fromJson(x)));
 
-String addressModelToJson(AddressModel data) => json.encode(data.toJson());
+String addressModelToJson(List<AddressModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class AddressModel {
   AddressModel({
