@@ -15,10 +15,17 @@ class CartController extends GetxController{
   @override
   void onInit() {
     super.onInit();
-    mAddToCartList.addAll(getAddToCartList());
+    //mAddToCartList.addAll(getAddToCartList());
 
     calculateTotalCost();
 
+  }
+
+
+  addNewDataToCart(AddToCartModel mModel){
+    mAddToCartList.add(mModel);
+    addCount(mAddToCartList.length-1);
+    calculateTotalCost();
   }
 
 
@@ -52,7 +59,7 @@ class CartController extends GetxController{
       itemCost = (tempItemCost+mModel.total).obs;
     }
 
-    if(itemCost>=0&&itemCost<3000){
+    if(itemCost>=1&&itemCost<3000){
       double tempItemCost = itemCost.value;
       totalCost = (tempItemCost+1000).obs;
       deliveryCost = 1000.0.obs;

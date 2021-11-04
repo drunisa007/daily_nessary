@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/all_font_sizes.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
+import 'package:snack_delivery/core/models/item_detail_noimage_model.dart';
 import 'package:snack_delivery/core/models/package_model.dart';
 import 'package:snack_delivery/feature/item_detail/controller/item_detail_controller.dart';
 
@@ -16,20 +17,17 @@ Widget buildBannerItemDetail(
     context,
     width,
     ItemDetailController itemDetailController,
-    SizeConfig sizeConfig,
-    List<String> mListImage) {
-  List<int> mListNumber = [];
+    SizeConfig sizeConfig) {
 
-  for (int i = 1; i <= mListImage.length; i++) {
-    mListNumber.add(i);
-  }
+
+
 
   CarouselController buttonCarouselController = CarouselController();
 
   return Container(
     child: GetBuilder<ItemDetailController>(
       init: itemDetailController,
-      builder: (_) => Stack(
+      builder: (_) => itemDetailController.showLoading.isTrue?Container():Stack(
         children: [
           Container(
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(4)),
@@ -47,13 +45,13 @@ Widget buildBannerItemDetail(
                 enableInfiniteScroll: true,
               ),
               carouselController: buttonCarouselController,
-              items: mListNumber.map((i) {
+              items: itemDetailController.mItemDetailImageInt.map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
                       width: width,
                       child: CachedNetworkImage(
-                        imageUrl: mListImage[i - 1],
+                        imageUrl: itemDetailController.mItemDetailImages[i - 1],
                         placeholder: (context, url) => Image.asset(
                           "assets/images/place_holder.png",
                           fit: BoxFit.fill,
@@ -94,10 +92,10 @@ Widget buildBannerItemDetail(
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: DotsIndicator(
-                  dotsCount: mListImage.length,
+                  dotsCount: itemDetailController.mItemDetailImages.length,
                   position: _.currentIndexBanner.toDouble(),
                   decorator: DotsDecorator(
-                    color: Colors.white, // Inactive color
+                    color: Colors.black, // Inactive color
                     activeColor: Theme.of(context).colorScheme.secondary,
                     size: const Size.square(9.0),
                     activeSize: const Size(18.0, 9.0),
@@ -123,7 +121,7 @@ Widget buildSelectablePackageDesign(SizeConfig mSizeConfig,
     child: ListView.builder(
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        PackageModel mModel = packagesList[index];
+        ItemDetailNoImageModel mModel = mController.mItemDetailNoImage[index];
         return Obx(() => Container(
               height: mSizeConfig.blockSizeVertical * 4.5,
               margin: EdgeInsets.only(
@@ -139,71 +137,83 @@ Widget buildSelectablePackageDesign(SizeConfig mSizeConfig,
                       ? Theme.of(context).primaryColor
                       : Colors.grey.withOpacity(0.2),
                   borderRadius: BorderRadius.circular(kMarginMedium.sp)),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      child: Text(
-                        "${mModel.packageName}",
-                        style: TextStyle(
-                            color: mController.groupValue.value == index + 1
-                                ? Colors.white
-                                : Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: kMediumTitleFontSize.sp),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      child: Text(
-                        "Save ${mModel.save} Ks",
-                        style: TextStyle(
-                            color: mController.groupValue.value == index + 1
-                                ? Colors.white
-                                : Colors.black,
-                            fontSize: kSmallTitleFontSize.sp),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      height: mSizeConfig.blockSizeVertical * 3.5,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 1, vertical: 0.1),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).primaryColor, width: 1),
-                          borderRadius: BorderRadius.circular(kMarginBig)),
-                      child: Center(
-                        child: Text(
-                          "${mModel.price} Ks",
-                          style: TextStyle(
-                              color: mController.groupValue.value == index + 1
-                                  ? Colors.white
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: kMediumTitleFontSize.sp),
+              child: Material(
+                color: Colors.transparent,
+                borderRadius: BorderRadius.circular(kMarginMedium.sp),
+                child: InkWell(
+                  onTap: (){
+                    mController.changeRadioValue(index+1);
+                  },
+                  splashColor: Colors.white60,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          child: Text(
+                            "${mModel.packageName}",
+                            style: TextStyle(
+                                color: mController.groupValue.value == index + 1
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: kMediumTitleFontSize.sp),
+                          ),
                         ),
                       ),
-                    ),
+                      /// have to fix here
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          child: Text(
+                            "Save 300 Ks",
+                            style: TextStyle(
+                                color: mController.groupValue.value == index + 1
+                                    ? Colors.white
+                                    : Colors.black,
+                                fontSize: kSmallTitleFontSize.sp),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          height: mSizeConfig.blockSizeVertical * 3.5,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 1, vertical: 0.1),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor, width: 1),
+                              borderRadius: BorderRadius.circular(kMarginBig)),
+                          child: Center(
+                            child: Text(
+                              "${mModel.price} Ks",
+                              style: TextStyle(
+                                  color: mController.groupValue.value == index + 1
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: kMediumTitleFontSize.sp),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Radio(
+                        onChanged: (int? values) {
+                          print("$values");
+                          mController.changeRadioValue(values!);
+                        },
+                        value: index + 1,
+                        groupValue: mController.groupValue.value,
+                        activeColor: Colors.white,
+                      )
+                    ],
                   ),
-                  Radio(
-                    onChanged: (int? values) {
-                      mController.changeRadioValue(values!);
-                    },
-                    value: index + 1,
-                    groupValue: mController.groupValue.value,
-                    activeColor: Colors.white,
-                  )
-                ],
+                ),
               ),
             ));
       },
-      itemCount: packagesList.length,
+      itemCount: mController.mItemDetailNoImage.length,
       shrinkWrap: true,
     ),
   );
@@ -221,39 +231,48 @@ Widget buildBottomPriceDetailDesign(
               child: Container(
                 height: double.infinity,
                 color: Colors.green,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      child: Text(
-                        '${mController.totalPrice} Ks',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: kLargeBodyFontSize),
-                      ),
-                    ),
-                    Row(
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    splashColor: Colors.white60,
+                    onTap: (){
+
+                    },
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           child: Text(
-                            'ခြင်းတောင်း',
+                            '${mController.totalPrice} Ks',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: kLargeTitleFontSize),
+                                fontSize: kLargeBodyFontSize),
                           ),
                         ),
-                        SvgPicture.asset(
-                          'assets/images/cart.svg',
-                          width: mSizeConfig.blockSizeVertical * 3,
-                          height: mSizeConfig.blockSizeVertical * 3,
-                          color: Colors.white,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              child: Text(
+                                'ခြင်းတောင်း',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: kLargeTitleFontSize),
+                              ),
+                            ),
+                            SvgPicture.asset(
+                              'assets/images/cart.svg',
+                              width: mSizeConfig.blockSizeVertical * 3,
+                              height: mSizeConfig.blockSizeVertical * 3,
+                              color: Colors.white,
+                            )
+                          ],
                         )
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -287,13 +306,16 @@ Widget buildBottomPriceDetailDesign(
                           )
                         ],
                       ))
-                  : GestureDetector(
-                      onTap: () {
-                        mController.changeTotalPrice();
-                      },
-                      child: Container(
-                        height: double.infinity,
-                        color: Theme.of(context).primaryColor,
+                  : Container(
+                    height: double.infinity,
+                    color: Theme.of(context).primaryColor,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Colors.white60,
+                        onTap: (){
+                          mController.changeTotalPrice();
+                        },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -333,6 +355,7 @@ Widget buildBottomPriceDetailDesign(
                         ),
                       ),
                     ),
+                  ),
             )
           ],
         ),

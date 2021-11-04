@@ -16,8 +16,8 @@ Widget buildAddToCartListData(
           AddToCartModel mModel = mController.mAddToCartList[index];
 
           return Container(
-            height: mSizeConfig.blockSizeVertical * 11,
-            margin: EdgeInsets.only(bottom: kMarginLarge),
+            height: mSizeConfig.blockSizeVertical * 17,
+            margin: EdgeInsets.only(bottom: kMarginSmall),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(kMarginTiny.sp)),
@@ -59,29 +59,29 @@ Widget buildAddToCartListData(
                           Container(
                             child: Text(
                               mModel.title,
+                              maxLines: 2,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: kMediumTitleFontSize.sp,
-                                  letterSpacing: 1),
+                                  fontSize: kMediumTitleFontSize.sp-2),
                             ),
                           ),
                           Container(
                             child: Text(
-                              mModel.quantity,
+                              mModel.package,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w700,
-                                  fontSize: kMediumTitleFontSize.sp,
+                                  fontSize: kMediumTitleFontSize.sp-1,
                                   letterSpacing: 1),
                             ),
                           ),
                           Container(
                             child: Text(
-                              "${mModel.price} / 1",
+                              "${mModel.price} / ${mModel.quantity}",
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: kMediumBodyFontSize.sp,
+                                  fontSize: kMediumBodyFontSize.sp-1,
                                   letterSpacing: 1),
                             ),
                           ),
@@ -91,7 +91,7 @@ Widget buildAddToCartListData(
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontWeight: FontWeight.w800,
-                                  fontSize: kMediumBodyFontSize.sp,
+                                  fontSize: kMediumBodyFontSize.sp-1,
                                   letterSpacing: 1),
                             ),
                           )

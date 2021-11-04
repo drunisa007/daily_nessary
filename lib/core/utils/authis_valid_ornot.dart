@@ -28,7 +28,7 @@ String getAuth() {
 
 String getAPIBox() {
   var box = Hive.box("apiBox");
-  var data =  box.get("key")??"nokey";
+  var data =  box.get("key")??"2177131a1d8cddc76c80b22ad037427aa99d6f4188b778fcd092602f75f7d2e230e5e2c904cd28451704caf003cd09b781ae7a58fd6907d6c0a76636294ad564";
   return data;
 }
 
@@ -40,7 +40,7 @@ writeAPIKey(key){
 
 String getCustomerBox() {
   var box = Hive.box("customerBox");
-  var data =  box.get("cus")??"nocus";
+  var data =  box.get("cus")??"39";
   return data;
 }
 

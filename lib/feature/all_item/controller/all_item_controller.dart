@@ -13,12 +13,14 @@ class AllItemController extends GetxController{
   RxString errorMessage = "".obs;
   RxBool showLoading=false.obs;
 
+  RxInt typeId = 0.obs;
 
-  fetchItem(String categoryId) async {
+
+  fetchItem(String categoryId,String typeId) async {
 
     mItemList.clear();
     showLoadingForFetchingItemList();
-    HttpGetResult<ItemModel> result = await _itemRepo.getItem(categoryId);
+    HttpGetResult<ItemModel> result = await _itemRepo.getItem(categoryId,typeId);
     hideLoadingForFetchingItemList();
     if(result.isSuccessful){
       mItemList.addAll(result.mData);
@@ -53,7 +55,7 @@ class AllItemController extends GetxController{
     hideLoadingForFetchingTypeList();
     if(result.isSuccessful){
       mTypeList.addAll(result.mData);
-      print(mTypeList);
+      fetchItem(categoryId,mTypeList[0].typeId);
     }
     else{
       errorMessageType.value= result.errorMessage;
@@ -67,5 +69,16 @@ class AllItemController extends GetxController{
   hideLoadingForFetchingTypeList(){
     showLoadingType.toggle();
   }
+
+  //wokring for typeid
+
+  changeTypePosition(int position){
+    typeId.value = position;
+  }
+
+ int  getTypePosition(){
+   return typeId.value;
+  }
+
 
 }

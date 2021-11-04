@@ -13,7 +13,20 @@ class FeaturePage extends StatelessWidget {
   Widget build(BuildContext context) {
     FeatureController mFeatureController = Get.find<FeatureController>();
 
-    return ScreenUtilInit(
+    // return Scaffold(
+    //   body: MainPages().getPages(mFeatureController.getIndex()),
+    //   bottomNavigationBar:
+    //   getBottomNavBarForFeature(mFeatureController, context),
+    // );
+     return ScreenUtilInit(
+        builder: () => Obx(()=> Scaffold(
+          body: MainPages().getPages(mFeatureController.getIndex()),
+          bottomNavigationBar:
+          getBottomNavBarForFeature(mFeatureController, context),
+        ))
+     );
+
+   /* return ScreenUtilInit(
         builder: () => Obx(() => mFeatureController.authPosition.value == 0
             ? Center(child: Text("Splash Screen is showing"))
             : mFeatureController.authPosition.value == 1
@@ -27,6 +40,6 @@ class FeaturePage extends StatelessWidget {
                     body: MainPages().getPages(mFeatureController.getIndex()),
                     bottomNavigationBar:
                         getBottomNavBarForFeature(mFeatureController, context),
-                  )));
+                  )));*/
   }
 }

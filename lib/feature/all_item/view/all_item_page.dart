@@ -22,7 +22,6 @@ class AllItemPage extends StatelessWidget {
 
     AllItemController mAllItemController = Get.find<AllItemController>();
 
-    //mAllItemController.fetchItem(categoryId);
     mAllItemController.fetchType(categoryId);
 
     return Scaffold(
@@ -34,79 +33,153 @@ class AllItemPage extends StatelessWidget {
               left: kMarginMedium,
               right: kMarginMedium,
               bottom: kMarginMedium),
-          child:Obx(()=>  Column(
+          child: Column(
             children: [
-              if (mAllItemController.showLoadingType.isTrue) Container() else Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(top: 10,left: 4,right: 4,bottom: 4),
-                child: GridView.builder(
-                    gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: 0.4 / 0.47,
-                        crossAxisCount: 5,
-                        crossAxisSpacing: 0,
-                        mainAxisSpacing: 0),
-                    itemCount: mAllItemController.mTypeList.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
+                  Obx(
+                    () => mAllItemController.showLoadingType.isTrue
+                        ? Container()
+                        : Container(
+                            width: double.infinity,
+                            padding: EdgeInsets.only(
+                                top: 10, left: 4, right: 4, bottom: 4),
+                            child: GridView.builder(
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 0.4 / 0.47,
+                                        crossAxisCount: 5,
+                                        crossAxisSpacing: 0,
+                                        mainAxisSpacing: 0),
+                                itemCount: mAllItemController.mTypeList.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, index) {
+                                  TypeModel mModel =
+                                      mAllItemController.mTypeList[index];
 
-                      TypeModel mModel = mAllItemController.mTypeList[index];
-
-                      return Container(
-                        margin: EdgeInsets.zero,
-                        child: Column(
-                          children: [
-                            Container(
-                              width:  mSizeConfig.blockSizeVertical * 6.5,
-                              height: mSizeConfig.blockSizeVertical * 6.5,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(mSizeConfig.blockSizeVertical * 6.5/2),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.3),
-                                    spreadRadius: 1,
-                                    blurRadius: 1,
-                                    offset: Offset(0, 2),
-                                  )
-                                ]
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(mSizeConfig.blockSizeVertical * 6.5/2),
-                                child: CachedNetworkImage(
-                                  imageUrl: mModel.typeImg,
-                                  placeholder: (context, url) =>
-                                      Image.asset('assets/images/place_holder.png',fit: BoxFit.fill,),
-                                  errorWidget: (context, url, error) =>
-                                      Image.asset('assets/images/place_holder.png',fit: BoxFit.fill,),
-                                  fit: BoxFit.fill,
-                                  width:  mSizeConfig.blockSizeVertical * 6.5,
-                                  height: mSizeConfig.blockSizeVertical * 6.5,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width:mSizeConfig.blockSizeHorizontal*15,
-                              margin: EdgeInsets.only(top: 6),
-                              child: Center(
-                                child: Text(mModel.typeName,style: TextStyle(
-                                  fontSize: kSmallTitleFontSize,
-                                  color: Colors.black,
-                            ),maxLines: 2,textAlign: TextAlign.center,),
-                              ),)
-                          ],
-                        ),
-                      );
-                    }),
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5)),
-              )
-
-              /*      Obx(()=> mAllItemController.showLoading.isTrue
-                  ? buildItemsShimmer(mSizeConfig)
-                  : buildItems(mSizeConfig, mAllItemController))*/
+                                  return Obx(()=> GestureDetector(
+                                    onTap: () {
+                                      mAllItemController
+                                          .changeTypePosition(index);
+                                      mAllItemController.fetchItem(
+                                          categoryId,
+                                          mAllItemController
+                                              .mTypeList[index].typeId);
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.zero,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            width:
+                                            mSizeConfig.blockSizeVertical *
+                                                6.5,
+                                            height:
+                                            mSizeConfig.blockSizeVertical *
+                                                6.5,
+                                            decoration: BoxDecoration(
+                                                borderRadius: BorderRadius
+                                                    .circular(mSizeConfig
+                                                    .blockSizeVertical *
+                                                    6.5 /
+                                                    2),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.grey
+                                                        .withOpacity(0.3),
+                                                    spreadRadius: 1,
+                                                    blurRadius: 1,
+                                                    offset: Offset(0, 1),
+                                                  )
+                                                ]),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                  BorderRadius.circular(
+                                                      mSizeConfig
+                                                          .blockSizeVertical *
+                                                          6.5 /
+                                                          2),
+                                                  border: Border.all(
+                                                      width: 1.5,
+                                                      color: mAllItemController
+                                                          .getTypePosition() ==
+                                                          index
+                                                          ? Theme.of(context)
+                                                          .colorScheme
+                                                          .secondary
+                                                          : Colors
+                                                          .transparent)),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius
+                                                    .circular(mSizeConfig
+                                                    .blockSizeVertical *
+                                                    6.5 /
+                                                    2),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: mModel.typeImg,
+                                                  placeholder: (context, url) =>
+                                                      Image.asset(
+                                                        'assets/images/place_holder.png',
+                                                        fit: BoxFit.fill,
+                                                      ),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                      Image.asset(
+                                                        'assets/images/place_holder.png',
+                                                        fit: BoxFit.fill,
+                                                      ),
+                                                  fit: BoxFit.fill,
+                                                  width: mSizeConfig
+                                                      .blockSizeVertical *
+                                                      6.5,
+                                                  height: mSizeConfig
+                                                      .blockSizeVertical *
+                                                      6.5,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: mSizeConfig
+                                                .blockSizeHorizontal *
+                                                15,
+                                            margin: EdgeInsets.only(top: 6),
+                                            child: Center(
+                                              child: Text(
+                                                mModel.typeName,
+                                                style: TextStyle(
+                                                  fontSize: kSmallTitleFontSize,
+                                                  color: mAllItemController
+                                                      .getTypePosition() ==
+                                                      index
+                                                      ? Theme.of(context)
+                                                      .colorScheme
+                                                      .secondary
+                                                      : Colors.black,
+                                                ),
+                                                maxLines: 2,
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ));
+                                }),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                  ),
+              SizedBox(
+                height: 8,
+              ),
+              Expanded(
+                  child: Obx(() => mAllItemController.showLoading.isTrue
+                      ? buildItemsShimmer(mSizeConfig)
+                      : buildItems(mSizeConfig, mAllItemController)))
             ],
-          ))),
+          )),
     );
   }
 }

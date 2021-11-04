@@ -21,51 +21,54 @@ Widget buildHomePageBody(BuildContext context, SizeConfig mSizeConfig,
       itemBuilder: (context, int index) {
         CategoryModel mModel = mHomeController.mCategoryList[index];
 
-        return GestureDetector(
-          onTap: () {
-            Get.toNamed('/all-item-page',arguments: [mModel.categId.toString(),mModel.categName]);
-          },
-          child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(kMarginSmall)),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(kMarginSmall),
-                        topRight: Radius.circular(kMarginSmall)),
-                    child: CachedNetworkImage(
-                      imageUrl: mModel.categImg,
-                      placeholder: (context, url) => Image.asset(
-                        'assets/images/place_holder.png',
-                        fit: BoxFit.fill,
-                      ),
-                      errorWidget: (context, url, error) => Image.asset(
-                        'assets/images/place_holder.png',
-                        fit: BoxFit.fill,
-                      ),
-                      fit: BoxFit.fitHeight,
-                      width: double.infinity,
-                      height: mSizeConfig.blockSizeVertical * 15,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5.sp,
-                  ),
-                  Text(
-                    mModel.categName,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: kMediumTitleFontSize,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 5.sp,
-                  ),
-                ],
-              )),
-        );
+        return Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(kMarginSmall)),
+                child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                          onTap: (){
+                            Get.toNamed('/all-item-page',arguments: [mModel.categId.toString(),mModel.categName]);
+                          },
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(kMarginSmall),
+                                  topRight: Radius.circular(kMarginSmall)),
+                              child: CachedNetworkImage(
+                                imageUrl: mModel.categImg,
+                                placeholder: (context, url) => Image.asset(
+                                  'assets/images/place_holder.png',
+                                  fit: BoxFit.fill,
+                                ),
+                                errorWidget: (context, url, error) => Image.asset(
+                                  'assets/images/place_holder.png',
+                                  fit: BoxFit.fill,
+                                ),
+                                fit: BoxFit.fitHeight,
+                                width: double.infinity,
+                                height: mSizeConfig.blockSizeVertical * 15,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 5.sp,
+                            ),
+                            Text(
+                              mModel.categName,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: kMediumTitleFontSize,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 5.sp,
+                            ),
+                          ],
+                        ),
+                      ),),
+                );
       }));
 }
 

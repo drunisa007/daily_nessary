@@ -12,6 +12,7 @@ Widget buildItems(
     SizeConfig mSizeConfig, AllItemController mAllItemController) {
   return Obx(() => GridView.builder(
       itemCount: mAllItemController.mItemList.length,
+      shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: (1 / 1.15),
@@ -21,63 +22,67 @@ Widget buildItems(
       itemBuilder: (context, int index) {
         ItemModel mModel = mAllItemController.mItemList[index];
 
-        return GestureDetector(
-          onTap: () {
-            Get.toNamed('/item-detail-page');
-          },
-          child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(kMarginSmall)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(kMarginSmall),
-                        topRight: Radius.circular(kMarginSmall)),
-                    child: CachedNetworkImage(
-                      imageUrl: mModel.img,
-                      placeholder: (context, url) =>
-                          Image.asset('assets/images/place_holder.png',fit: BoxFit.fill,),
-                      errorWidget: (context, url, error) =>
-                          Image.asset('assets/images/place_holder.png',fit: BoxFit.fill,),
-                      fit: BoxFit.fitHeight,
-                      width: double.infinity,
-                      height: mSizeConfig.blockSizeVertical * 13.5,
+        return Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(kMarginSmall)),
+            child: Material(
+              color: Colors.transparent,
+                borderRadius: BorderRadius.circular(kMarginSmall),
+              child: InkWell(
+                onTap: (){
+                  Get.toNamed('/item-detail-page',arguments: [mModel.itemId]);
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(kMarginSmall),
+                          topRight: Radius.circular(kMarginSmall)),
+                      child: CachedNetworkImage(
+                        imageUrl: mModel.img,
+                        placeholder: (context, url) =>
+                            Image.asset('assets/images/place_holder.png',fit: BoxFit.fill,),
+                        errorWidget: (context, url, error) =>
+                            Image.asset('assets/images/place_holder.png',fit: BoxFit.fill,),
+                        fit: BoxFit.fitHeight,
+                        width: double.infinity,
+                        height: mSizeConfig.blockSizeVertical * 13.5,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 5.sp,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: kMarginMedium),
-                    child: Text(
-                      mModel.itemName,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: kLargeBodyFontSize,
-                          fontWeight: FontWeight.bold),
+                    SizedBox(
+                      height: 5.sp,
                     ),
-                  ),
-                  SizedBox(
-                    height: 3.sp,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: kMarginMedium),
-                    child: Text(
-                      "${mModel.packageName} ${mModel.price} Ks",
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontSize: kMediumBodyFontSize,
-                          fontWeight: FontWeight.bold),
+                    Container(
+                      margin: EdgeInsets.only(left: kMarginMedium),
+                      child: Text(
+                        mModel.itemName,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: kLargeBodyFontSize,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                ],
-              )),
-        );
+                    SizedBox(
+                      height: 3.sp,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: kMarginMedium),
+                      child: Text(
+                        "${mModel.packageName} ${mModel.price} Ks",
+                        style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: kMediumBodyFontSize,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ));
       }));
 }
 

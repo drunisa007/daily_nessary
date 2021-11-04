@@ -1,26 +1,26 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:snack_delivery/core/models/category_model.dart';
 import 'package:snack_delivery/core/models/http_get_result.dart';
 import 'package:snack_delivery/core/models/http_response.dart';
-import 'package:snack_delivery/core/models/item_model.dart';
+import 'package:snack_delivery/core/models/item_detail_model.dart';
 import 'package:snack_delivery/service/http_service.dart';
 
-class ItemRepo{
+class ItemDetailRepo{
 
   late HttpService _httpService;
 
-  ItemRepo(){
+  ItemDetailRepo(){
     _httpService = Get.put(HttpService());
   }
 
-  Future<HttpGetResult<ItemModel>>  getItem(categoryId,typeId) async {
-    HttpResponse result = await _httpService.getData("Item/?catid=$categoryId&typeid=$typeId&page=1");
+  Future<HttpGetResult<ItemDetailModel>>  getItemDetail(itemId) async {
+    HttpResponse result = await _httpService.getData("Item/?itemid=$itemId");
+
     if(result.isSuccessful){
       Map tempJson = jsonDecode(result.mData);
-      String tempData = jsonEncode(tempJson["output"]["data"]);
-      List<ItemModel> parseData = itemModelFromJson(tempData);
+      String tempData = jsonEncode(tempJson["output"]);
+      List<ItemDetailModel> parseData = itemDetailModelFromJson(tempData);
       return HttpGetResult('', 200, parseData, true);
     }
     else{

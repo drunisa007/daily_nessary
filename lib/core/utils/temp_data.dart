@@ -2,50 +2,6 @@ import 'package:snack_delivery/core/models/addtocart_model.dart';
 import 'package:snack_delivery/core/models/deliveryfee_model.dart';
 import 'package:snack_delivery/core/models/package_model.dart';
 
-List<AddToCartModel> _mAddToCartList = [
-  AddToCartModel(
-      id: "00001",
-      title: "Snack One",
-      image: "https://dl.dropbox.com/s/6efyl0l85xlwe4g/sea.jpg?dl=0",
-      quantity: "3 Pcs",
-      price: 300.0,
-      total: 300.0,
-      count: 1,
-      deleted: false),
-  AddToCartModel(
-      id: "00002",
-      title: "Snack Two",
-      image: "https://dl.dropbox.com/s/key5kjc3ltynroi/meat.jpg?dl=0",
-      quantity: "3 Pcs",
-      price: 300.0,
-      total: 600.0,
-      count: 2,
-      deleted: false),
-  AddToCartModel(
-      id: "00003",
-      title: "Snack Three",
-      image: "https://dl.dropbox.com/s/cfko92yur0yfii5/watch.jpg?dl=0",
-      quantity: "5 Pcs",
-      price: 500.0,
-      total: 2500.0,
-      count: 5,
-      deleted: false),
-  AddToCartModel(
-      id: "00004",
-      title: "Snack Four",
-      image: "https://dl.dropbox.com/s/cfko92yur0yfii5/watch.jpg?dl=0",
-      quantity: "5 Pcs",
-      price: 500.0,
-      total: 2500.0,
-      count: 5,
-      deleted: false)
-];
-
-
-List<AddToCartModel> getAddToCartList(){
-  return _mAddToCartList;
-}
-
 
 List<String> _mTestingImages=[
   "https://dl.dropbox.com/s/6efyl0l85xlwe4g/sea.jpg?dl=0",
