@@ -19,7 +19,7 @@ class MyAddressPage extends StatelessWidget {
 
     sizeConfig.init(context);
     return ScreenUtilInit(builder: () => Scaffold(
-      appBar: getAppBarWithBackArrow("My Address", sizeConfig, ()=> print("haha")),
+      appBar: getAppBarWithBackArrow("My Address", sizeConfig, ()=> Get.back()),
 
       body: buildMyAddressPageAllWidget(context, myAddressPageController, sizeConfig),
     ));

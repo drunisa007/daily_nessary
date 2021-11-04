@@ -68,13 +68,13 @@ Widget addAddressWidget(BuildContext context,
                 style: TextStyle(color: Colors.black,fontSize: kMediumBodyFontSize.sp,),
 
                 items: <String>[
-                  'Android',
-                  'IOS',
-                  'Flutter',
-                  'Node',
-                  'Java',
-                  'Python',
-                  'PHP',
+                  'Amarapura ',
+                  'Aungmyethazan',
+                  'Chanayethazan',
+                  'Chanmyathazi ',
+                  'Maha Aungmye',
+                  'Pyigyidagun',
+                  'Patheingyi',
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -134,7 +134,7 @@ Widget addAddressWidget(BuildContext context,
                 color: Colors.grey.withOpacity(0.8),
                 fontSize: kMediumBodyFontSize.sp),
           ),
-          maxLength: 11,
+
         ),
         SizedBox(
           height: 16,

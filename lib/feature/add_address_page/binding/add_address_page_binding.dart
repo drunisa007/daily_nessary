@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:snack_delivery/core/constants/size_config.dart';
+import 'package:snack_delivery/core/repository/address_post_repo.dart';
 import 'package:snack_delivery/feature/add_address_page/controller/add_address_page_controller.dart';
 import 'package:snack_delivery/feature/my_address_page/controller/my_address_page_controller.dart';
 
@@ -8,8 +9,10 @@ class AddAddressPageBinding extends Bindings {
   void dependencies() {
     // TODO: implement dependencies
     Get.put(AddAddressPageController());
+  //  Get.lazyPut(() => AddressPostRepo());
     Get.put(SizeConfig());
     Get.lazyPut(() => MyAddressPageController());
+
 
   }
 
