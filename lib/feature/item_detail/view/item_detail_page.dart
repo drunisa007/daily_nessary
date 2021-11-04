@@ -21,9 +21,6 @@ class ItemDetailPage extends StatelessWidget {
     String itemId = Get.arguments[0];
     mController.fetchItemDetail(itemId);
 
-    CartController mCartController = Get.find<CartController>();
-
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(

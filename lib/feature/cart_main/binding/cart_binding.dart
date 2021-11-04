@@ -4,7 +4,7 @@ import 'package:snack_delivery/feature/cart_main/controller/cart_controller.dart
 class CartBinding extends Bindings{
   @override
   void dependencies() {
-   Get.put(CartController());
+   Get.lazyPut(() => CartController());
   }
 
 }
