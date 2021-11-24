@@ -1,1 +1,1 @@
-const String API_KEY = "https://seinwholesale.com/api/";
+const String API_KEY = "";
